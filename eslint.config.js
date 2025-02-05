@@ -33,6 +33,7 @@ export default tseslint.config(
       'prettier/prettier': 'error',
       'prefer-template': 'error',
       'prefer-arrow-callback': 'error',
+      'no-console': 'error',
     },
   }
 );
