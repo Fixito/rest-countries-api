@@ -8,7 +8,7 @@ export default function App() {
     <Routes>
       <Route element={<ShellLayout />}>
         <Route path='/' element={<Home />} />
-        <Route path='countries/:coutryId' element={<CountryDetails />} />
+        <Route path='countries/:countryName' element={<CountryDetails />} />
       </Route>
       <Route path='*' element={<NoMatch />} />
     </Routes>
