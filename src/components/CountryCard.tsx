@@ -1,6 +1,6 @@
 import { Link } from 'react-router';
 
-import { Country } from '../types';
+import { Country } from '@/lib/types';
 
 export default function CountryCard({
   name,

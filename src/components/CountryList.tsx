@@ -1,4 +1,5 @@
-import { Country } from '../types';
+import { Country } from '@/lib/types';
+
 import CountryCard from './CountryCard';
 
 type CountryListProps = {
@@ -9,7 +10,7 @@ export default function CountryList({ countries }: CountryListProps) {
   return (
     <section>
       {countries.map((country) => (
-        <CountryCard key={country.name.common} {...country} />
+        <CountryCard key={country.name.official} {...country} />
       ))}
     </section>
   );
