@@ -1,4 +1,12 @@
-export default function SearchInput() {
+type SeachInputProps = {
+  searchTerm: string;
+  onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+};
+
+export default function SearchInput({
+  searchTerm,
+  onInputChange,
+}: SeachInputProps) {
   return (
     <div>
       <label htmlFor='search'>Search four a country</label>
@@ -6,7 +14,9 @@ export default function SearchInput() {
         type='search'
         name='search'
         id='search'
-        placeholder='search for a country...'
+        placeholder='Search for a country...'
+        value={searchTerm}
+        onChange={onInputChange}
       />
     </div>
   );
