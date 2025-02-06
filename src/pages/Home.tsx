@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 import { useQuery } from '@tanstack/react-query';
+import { sortBy } from 'lodash';
 
 import CategoryFilter from '@/components/CategoryFilter';
 import CountryList from '@/components/CountryList';
@@ -17,23 +18,36 @@ export default function Home() {
   });
   const [page, setPage] = useState(0);
   const [searchTerm, setSearchTerm] = useState('');
+  const [region, setRegion] = useState('');
   const observerRef = useRef<IntersectionObserver | null>(null);
   const loadMoreRef = useRef<HTMLDivElement | null>(null);
   const flagRef = useRef<boolean>(true);
   const debouncedSearchTerm = useDebounce({ value: searchTerm });
 
+  const regions = sortBy([...new Set(data?.map((country) => country.region))]);
+
   const filteredCountries =
-    data?.filter((country) =>
-      country.name.common
-        .toLowerCase()
-        .includes(debouncedSearchTerm.toLowerCase())
-    ) || [];
+    data?.filter((country) => {
+      if (region && country.region !== region) return false;
+      if (
+        debouncedSearchTerm &&
+        !country.name.common
+          .toLowerCase()
+          .includes(debouncedSearchTerm.toLowerCase())
+      )
+        return false;
+      return true;
+    }) || [];
 
   const countries = paginate(filteredCountries);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
     setPage(0);
+  };
+
+  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setRegion(e.target.value);
   };
 
   useEffect(() => {
@@ -66,13 +80,17 @@ export default function Home() {
           searchTerm={searchTerm}
           onInputChange={handleInputChange}
         />
-        <CategoryFilter />
+        <CategoryFilter
+          value={region}
+          options={regions}
+          onSelect={handleSelectChange}
+        />
       </div>
 
       {isError && <h1>Error: {error.message}</h1>}
 
       {searchTerm && countries.length === 0 ? (
-        <h1>No countries found for the search term "{searchTerm}"</h1>
+        <h1>No countries found for your search</h1>
       ) : (
         countries
           .slice(0, page + 1)
