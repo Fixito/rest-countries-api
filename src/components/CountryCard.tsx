@@ -4,7 +4,7 @@ import { Country } from '@/lib/types';
 
 export default function CountryCard({
   name,
-  flags,
+  flags: { svg, alt },
   population,
   region,
   capital,
@@ -12,7 +12,7 @@ export default function CountryCard({
   return (
     <Link to={`countries/${name.common}`}>
       <article>
-        <img src={flags.png} alt={name.common} />
+        <img src={svg} alt={alt} />
         <h2>{name.common}</h2>
         <ul>
           <li>
