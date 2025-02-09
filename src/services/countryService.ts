@@ -25,9 +25,9 @@ export async function fetchCountryDetails(name: string | undefined) {
     const { data } = await axios.get<CountryDetails[]>(
       `${COUNTRY_NAME_URL}${name}?fullText=true&fields=name,flags,population,region,subregion,capital,languages,currencies,tld,borders`
     );
-    const borderCodes = data[0]?.borders;
+    const borderCodes = data[0]?.borders || [];
 
-    if (borderCodes) {
+    if (borderCodes.length > 0) {
       const { data: bordersData } = await axios(
         `${BASE_URL}/alpha?codes=${borderCodes.join(',')}`
       );
@@ -39,7 +39,7 @@ export async function fetchCountryDetails(name: string | undefined) {
       return { ...data[0], borders: borderNames };
     }
 
-    return data;
+    return data[0];
   } catch (error) {
     if (error instanceof AxiosError) {
       throw new Error(error.message);

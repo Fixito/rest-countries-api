@@ -1,4 +1,5 @@
 import js from '@eslint/js';
+import pluginQuery from '@tanstack/eslint-plugin-query';
 import prettierConfig from 'eslint-config-prettier';
 import prettier from 'eslint-plugin-prettier';
 import reactHooks from 'eslint-plugin-react-hooks';
@@ -23,6 +24,7 @@ export default tseslint.config(
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
       prettier,
+      '@tanstack/query': pluginQuery,
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
@@ -30,6 +32,7 @@ export default tseslint.config(
         'warn',
         { allowConstantExport: true },
       ],
+      '@tanstack/query/exhaustive-deps': 'error',
       'prettier/prettier': 'error',
       'prefer-template': 'error',
       'prefer-arrow-callback': 'error',

@@ -1,21 +1,17 @@
 import { useEffect, useRef, useState } from 'react';
 
-import { useQuery } from '@tanstack/react-query';
 import { sortBy } from 'lodash';
 
 import CategoryFilter from '@/components/CategoryFilter';
 import CountryList from '@/components/CountryList';
 import Loading from '@/components/Loading';
 import SearchInput from '@/components/SearchInput';
+import { useFetchCountries } from '@/hooks/reactQueryCustomHooks';
 import { useDebounce } from '@/hooks/useDebounce';
 import { paginate } from '@/lib/utils';
-import { fetchCountryList } from '@/services/countryService';
 
 export default function Home() {
-  const { data, isError, isPending, error } = useQuery({
-    queryKey: ['countries'],
-    queryFn: fetchCountryList,
-  });
+  const { data, isError, isPending, error } = useFetchCountries();
   const [page, setPage] = useState(0);
   const [searchTerm, setSearchTerm] = useState('');
   const [region, setRegion] = useState('');
@@ -87,7 +83,7 @@ export default function Home() {
         />
       </div>
 
-      {isError && <h1>Error: {error.message}</h1>}
+      {isError && error && <h1>Error: {error.message}</h1>}
 
       {searchTerm && countries.length === 0 ? (
         <h1>No countries found for your search</h1>

@@ -1,24 +1,26 @@
-import { useQuery } from '@tanstack/react-query';
 import { Link, useParams } from 'react-router';
 
 import Loading from '@/components/Loading';
+import { useFetchCountryDetails } from '@/hooks/reactQueryCustomHooks';
 import { type CountryDetails } from '@/lib/types';
-import { fetchCountryDetails } from '@/services/countryService';
 
 export default function CountryDetails() {
-  const { countryName } = useParams();
+  const { countryName = '' } = useParams();
 
-  const { data, isError, isPending, error } = useQuery({
-    queryKey: ['country', countryName],
-    queryFn: () => fetchCountryDetails(countryName),
-  });
+  const { data, isError, isPending, error } =
+    useFetchCountryDetails(countryName);
 
   if (isPending) {
     return <Loading />;
   }
 
   if (isError) {
-    return <h1>Error: {error?.message}</h1>;
+    return (
+      <>
+        <h1>Error: {error?.message}</h1>
+        <Link to='/'>Back</Link>
+      </>
+    );
   }
 
   const {
