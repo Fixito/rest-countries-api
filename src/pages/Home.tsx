@@ -22,8 +22,10 @@ export default function Home() {
 
   const regions = sortBy([...new Set(data?.map((country) => country.region))]);
 
+  const sortedCountries = sortBy(data, 'name.common');
+
   const filteredCountries =
-    data?.filter((country) => {
+    sortedCountries?.filter((country) => {
       if (region && country.region !== region) return false;
       if (
         debouncedSearchTerm &&
