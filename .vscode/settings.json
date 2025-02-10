@@ -6,5 +6,8 @@
   },
   "editor.quickSuggestions": {
     "strings": "on"
+  },
+  "files.associations": {
+    "*.css": "tailwindcss"
   }
 }

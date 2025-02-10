@@ -72,8 +72,8 @@ export default function Home() {
   }, []);
 
   return (
-    <>
-      <div>
+    <div className='px-4 py-6'>
+      <div className='flex flex-col flex-wrap gap-10'>
         <SearchInput
           searchTerm={searchTerm}
           onInputChange={handleInputChange}
@@ -100,6 +100,6 @@ export default function Home() {
       {isPending && <Loading />}
 
       <div ref={loadMoreRef} />
-    </>
+    </div>
   );
 }

@@ -9,9 +9,11 @@ export default function SearchInput({
 }: SeachInputProps) {
   return (
     <div>
-      <label htmlFor='search'>Search four a country</label>
+      <label htmlFor='search' className='sr-only'>
+        Search four a country
+      </label>
       <input
-        type='search'
+        type='text'
         name='search'
         id='search'
         placeholder='Search for a country...'
