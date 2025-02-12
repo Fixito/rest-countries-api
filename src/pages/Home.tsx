@@ -18,20 +18,26 @@ export default function Home() {
   const loadMoreRef = useRef<HTMLDivElement | null>(null);
   const debouncedSearchTerm = useDebounce({ value: searchTerm });
 
-  const regions = sortBy([...new Set(data?.map((country) => country.region))]);
+  const regions = [
+    'All',
+    ...sortBy([...new Set(data?.map((country) => country.region))]),
+  ];
 
   const sortedCountries = sortBy(data, 'name.common');
 
   const filteredCountries =
     sortedCountries?.filter((country) => {
-      if (region && country.region !== region) return false;
+      if (region !== 'All' && region && country.region !== region) return false;
+
       if (
         debouncedSearchTerm &&
         !country.name.common
           .toLowerCase()
           .includes(debouncedSearchTerm.toLowerCase())
-      )
+      ) {
         return false;
+      }
+
       return true;
     }) || [];
 
