@@ -17,7 +17,7 @@ export default function SearchInput({
       <Label htmlFor='search' className='sr-only'>
         Search four a country
       </Label>
-      <div className='shadow-input has-[input:focus-within]:outline-input flex max-w-[30rem] items-center rounded-sm bg-white py-1.5 pl-8 outline-hidden -outline-offset-1 has-[input:focus-within]:outline-2 has-[input:focus-within]:-outline-offset-2 sm:flex-1 sm:py-2.5'>
+      <div className='shadow-input has-[input:focus-within]:outline-input flex w-full max-w-[30rem] items-center rounded-sm bg-white py-1.5 pl-8 outline-hidden -outline-offset-1 has-[input:focus-within]:outline-2 has-[input:focus-within]:-outline-offset-2 sm:py-2.5'>
         <Search className='text-subtle size-4 shrink-0 select-none sm:size-[1.125rem]' />
         <Input
           type='search'
