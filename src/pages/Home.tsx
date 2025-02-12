@@ -91,7 +91,11 @@ export default function Home() {
         </section>
       )}
 
-      {isPending && <Loading />}
+      {isPending && (
+        <div className='flex justify-center'>
+          <Loading />
+        </div>
+      )}
 
       <div ref={loadMoreRef} />
     </div>

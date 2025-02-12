@@ -11,7 +11,11 @@ export default function CountryDetails() {
     useFetchCountryDetails(countryName);
 
   if (isPending) {
-    return <Loading />;
+    return (
+      <div className='flex justify-center'>
+        <Loading />
+      </div>
+    );
   }
 
   if (isError) {

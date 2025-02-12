@@ -1,3 +1,5 @@
+import { LoaderCircle } from 'lucide-react';
+
 export default function Loading() {
-  return <div>Loading...</div>;
+  return <LoaderCircle className='text-neutral size-5 animate-spin' />;
 }
