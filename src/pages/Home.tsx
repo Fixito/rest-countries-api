@@ -2,10 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 
 import { sortBy } from 'lodash';
 
-import CategoryFilter from '@/components/CategoryFilter';
 import CountryList from '@/components/CountryList';
 import Loading from '@/components/Loading';
-import SearchInput from '@/components/SearchInput';
+import SearchAndFilter from '@/components/SearchAndFilter';
 import { useFetchCountries } from '@/hooks/reactQueryCustomHooks';
 import { useDebounce } from '@/hooks/useDebounce';
 import { paginate } from '@/lib/utils';
@@ -67,17 +66,13 @@ export default function Home() {
 
   return (
     <div className='mx-auto max-w-7xl px-4 py-6 xl:px-0'>
-      <div className='flex flex-col gap-10 md:flex-row md:items-center md:justify-between'>
-        <SearchInput
-          searchTerm={searchTerm}
-          onInputChange={handleInputChange}
-        />
-        <CategoryFilter
-          value={region}
-          options={regions}
-          onSelect={handleSelectChange}
-        />
-      </div>
+      <SearchAndFilter
+        searchTerm={searchTerm}
+        onInputChange={handleInputChange}
+        region={region}
+        regions={regions}
+        onSelect={handleSelectChange}
+      />
 
       {isError && error && (
         <div>
