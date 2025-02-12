@@ -66,7 +66,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className='mx-auto max-w-7xl px-4 py-6'>
+    <div className='mx-auto max-w-7xl px-4 py-6 xl:px-0'>
       <div className='flex flex-col gap-10 md:flex-row md:items-center md:justify-between'>
         <SearchInput
           searchTerm={searchTerm}

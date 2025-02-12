@@ -86,6 +86,7 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
+  --radius-xs: calc(var(--radius) - 7.6px);
   --radius-sm: calc(var(--radius) - 4.6px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -123,6 +124,8 @@
   --shadow-*: initial;
   --shadow-nav: 0 2px 4px rgba(0 0 0 / 5.62%);
   --shadow-input: 0 2px 9px rgba(0 0 0 / 5.32%);
+  --shadow-button: 0 2px 7px rgba(0 0 0 / 29.31%);
+  --shadow-border-countries: 0 2px 4px 1px rgba(0 0 0 / 10.49%);
 }
 
 @layer base {
