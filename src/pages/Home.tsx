@@ -17,7 +17,6 @@ export default function Home() {
   const [region, setRegion] = useState('');
   const observerRef = useRef<IntersectionObserver | null>(null);
   const loadMoreRef = useRef<HTMLDivElement | null>(null);
-  const flagRef = useRef<boolean>(true);
   const debouncedSearchTerm = useDebounce({ value: searchTerm });
 
   const regions = sortBy([...new Set(data?.map((country) => country.region))]);
@@ -44,19 +43,14 @@ export default function Home() {
     setPage(0);
   };
 
-  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setRegion(e.target.value);
+  const handleSelectChange = (value: string) => {
+    setRegion(value);
   };
 
   useEffect(() => {
     if (observerRef.current) observerRef.current.disconnect();
 
     observerRef.current = new IntersectionObserver((entries) => {
-      if (flagRef.current) {
-        flagRef.current = false;
-        return;
-      }
-
       if (entries[0] && entries[0].isIntersecting) {
         setPage((prevPage) => prevPage + 1);
       }
@@ -72,8 +66,8 @@ export default function Home() {
   }, []);
 
   return (
-    <div className='px-4 py-6'>
-      <div className='flex flex-col flex-wrap gap-10'>
+    <div className='mx-auto max-w-7xl px-4 py-6'>
+      <div className='flex flex-col gap-10 md:flex-row md:items-center md:justify-between'>
         <SearchInput
           searchTerm={searchTerm}
           onInputChange={handleInputChange}
@@ -90,11 +84,11 @@ export default function Home() {
       {searchTerm && countries.length === 0 ? (
         <h1>No countries found for your search</h1>
       ) : (
-        countries
-          .slice(0, page + 1)
-          .map((countryPage, index) => (
+        <section className='mt-8 grid justify-center gap-10 md:grid-cols-2 md:justify-items-center md:gap-[4.6875rem] lg:mt-12 lg:grid-cols-3 xl:grid-cols-4'>
+          {countries.slice(0, page + 1).map((countryPage, index) => (
             <CountryList key={index} countries={countryPage} />
-          ))
+          ))}
+        </section>
       )}
 
       {isPending && <Loading />}

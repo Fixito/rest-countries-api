@@ -1,4 +1,11 @@
+import { type ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
 import { ITEMS_PER_PAGE } from './constants';
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
 
 export function paginate<T>(items: T[]): T[][] {
   const itemsPerPage = ITEMS_PER_PAGE;
