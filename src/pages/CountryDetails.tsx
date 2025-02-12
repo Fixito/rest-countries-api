@@ -23,10 +23,19 @@ export default function CountryDetails() {
 
   if (isError) {
     return (
-      <>
-        <h1>Error: {error?.message}</h1>
-        <Link to='/'>Back</Link>
-      </>
+      <div className='mx-auto max-w-7xl px-6 pt-10 pb-[10rem] md:pt-20 xl:px-0'>
+        <Button
+          asChild
+          className='text-neutral shadow-button w-[6.5rem] rounded-xs bg-white px-6 py-1.5 text-sm/5 font-light hover:bg-white/1'
+        >
+          <Link to='/'>
+            <ArrowLeft /> Back
+          </Link>
+        </Button>
+        <h1 className='mt-16 text-3xl leading-none font-extrabold'>
+          Error: {error?.message}
+        </h1>
+      </div>
     );
   }
 

@@ -79,10 +79,18 @@ export default function Home() {
         />
       </div>
 
-      {isError && error && <h1>Error: {error.message}</h1>}
+      {isError && error && (
+        <div>
+          <h1 className='mt-6 text-3xl leading-none font-extrabold'>
+            Error: {error.message}
+          </h1>
+        </div>
+      )}
 
       {searchTerm && countries.length === 0 ? (
-        <h1>No countries found for your search</h1>
+        <h1 className='mt-16 text-3xl leading-none font-extrabold'>
+          No countries found for your search
+        </h1>
       ) : (
         <section className='mt-8 grid justify-center gap-10 md:grid-cols-2 md:justify-items-center md:gap-[4.6875rem] lg:mt-12 lg:grid-cols-3 xl:grid-cols-4'>
           {countries.slice(0, page + 1).map((countryPage, index) => (
