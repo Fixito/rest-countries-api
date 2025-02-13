@@ -130,7 +130,7 @@ export default function CountryDetails() {
 
 function BorderCountries({ borders }: { borders: string[] }) {
   return (
-    <div className='mt-[2.125rem] lg:flex lg:items-center lg:gap-2.5'>
+    <div className='mt-[2.125rem] lg:flex lg:items-baseline lg:gap-2.5'>
       <strong className='text-base/6 font-semibold'>Border Countries:</strong>
       <div className='mt-4 flex flex-1 flex-wrap gap-2.5 lg:mt-0'>
         {borders.map((border: string) => (
