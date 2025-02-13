@@ -11,19 +11,17 @@ interface SearchAndFilterProps {
   onSelect: (value: string) => void;
 }
 
-const SearchAndFilter: React.FC<SearchAndFilterProps> = ({
+export default function SearchAndFilter({
   searchTerm,
   onInputChange,
   region,
   regions,
   onSelect,
-}) => {
+}: SearchAndFilterProps) {
   return (
     <div className='flex flex-col gap-10 md:flex-row md:items-center md:justify-between'>
       <SearchInput searchTerm={searchTerm} onInputChange={onInputChange} />
       <CategoryFilter value={region} options={regions} onSelect={onSelect} />
     </div>
   );
-};
-
-export default SearchAndFilter;
+}

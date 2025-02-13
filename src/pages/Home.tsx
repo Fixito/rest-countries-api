@@ -7,6 +7,7 @@ import Loading from '@/components/Loading';
 import SearchAndFilter from '@/components/SearchAndFilter';
 import { useFetchCountries } from '@/hooks/reactQueryCustomHooks';
 import { useDebounce } from '@/hooks/useDebounce';
+import { Country } from '@/lib/types';
 import { paginate } from '@/lib/utils';
 
 export default function Home() {
@@ -18,9 +19,9 @@ export default function Home() {
   const loadMoreRef = useRef<HTMLDivElement | null>(null);
   const debouncedSearchTerm = useDebounce({ value: searchTerm });
 
-  const regions = [
+  const regions: string[] = [
     'All',
-    ...sortBy([...new Set(data?.map((country) => country.region))]),
+    ...sortBy([...new Set(data?.map((country: Country) => country.region))]),
   ];
 
   const sortedCountries = sortBy(data, 'name.common');
