@@ -18,7 +18,7 @@ export default function CountryCard({
           <img
             src={svg}
             alt={alt}
-            className='h-40 object-cover group-hover:opacity-75'
+            className='h-40 object-cover group-hover:opacity-75 group-focus:opacity-75'
           />
         </CardHeader>
         <CardContent className='p-6 pb-[2.875rem]'>

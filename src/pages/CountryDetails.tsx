@@ -26,7 +26,7 @@ export default function CountryDetails() {
       <div className='mx-auto max-w-7xl px-6 pt-10 pb-[10rem] md:pt-20 xl:px-0'>
         <Button
           asChild
-          className='text-neutral shadow-button w-[6.5rem] rounded-xs bg-white px-6 py-1.5 text-sm/5 font-light hover:bg-white/1'
+          className='shadow-button bg-primary hover:bg-primary/20 dark:hover:bg-primary/90 w-[6.5rem] rounded-xs px-6 py-1.5 text-sm/5 font-light'
         >
           <Link to='/'>
             <ArrowLeft /> Back
@@ -66,7 +66,7 @@ export default function CountryDetails() {
       <div>
         <Button
           asChild
-          className='text-neutral shadow-button w-[6.5rem] rounded-xs bg-white px-6 py-1.5 text-sm/5 font-light hover:bg-white/1'
+          className='text-primary-foreground shadow-button hover:bg-primary/20 bg-primary dark:hover:bg-primary/90 w-[6.5rem] rounded-xs px-6 py-1.5 text-sm/5 font-light'
         >
           <Link to='/'>
             <ArrowLeft /> Back
@@ -137,7 +137,7 @@ function BorderCountries({ borders }: { borders: string[] }) {
           <Button
             key={border}
             asChild
-            className='text-neutral shadow-border-countries w-[6.5rem] rounded-xs bg-white px-6 py-1.5 text-xs/5 leading-4 font-light hover:bg-white/1'
+            className='text-primary-foreground shadow-border-countries bg-primary hover:bg-primary/20 dark:hover:bg-primary/90 w-[6.5rem] rounded-xs px-6 py-1.5 text-xs/5 leading-4 font-light'
           >
             <Link to={`/countries/${border}`}>{border}</Link>
           </Button>

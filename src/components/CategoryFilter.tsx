@@ -22,7 +22,7 @@ export default function CategoryFilter({
   return (
     <>
       <Select name='category' value={value} onValueChange={onSelect}>
-        <SelectTrigger className='shadow-input text-neutral h-12 w-[12.5rem] rounded-sm border-none bg-white px-6 py-3.5 text-xs/5 sm:h-14 sm:py-[1.125rem] sm:text-sm/5'>
+        <SelectTrigger className='shadow-input bg-background h-12 w-[12.5rem] rounded-sm border-none px-6 py-3.5 text-xs/5 sm:h-14 sm:py-[1.125rem] sm:text-sm/5'>
           <SelectValue placeholder='Filter By Region' />
         </SelectTrigger>
         <SelectContent className='shadow-input rounded-sm border-none'>
@@ -32,7 +32,7 @@ export default function CategoryFilter({
                 <SelectItem
                   key={option}
                   value={option}
-                  className='text-neutral cursor-pointer text-xs/5 sm:text-sm/5'
+                  className='cursor-pointer text-xs/5 sm:text-sm/5'
                 >
                   {option}
                 </SelectItem>
