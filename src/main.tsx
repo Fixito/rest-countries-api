@@ -8,6 +8,7 @@ import { BrowserRouter } from 'react-router';
 
 import App from './App.tsx';
 import Fallback from './components/Fallback.tsx';
+import ThemeProvider from './contexts/ThemeProvider.tsx';
 import './index.css';
 
 const queryClient = new QueryClient();
@@ -17,7 +18,9 @@ createRoot(document.getElementById('root')!).render(
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <ErrorBoundary FallbackComponent={Fallback} onReset={() => {}}>
-          <App />
+          <ThemeProvider>
+            <App />
+          </ThemeProvider>
         </ErrorBoundary>
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
