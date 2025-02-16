@@ -31,6 +31,7 @@ Users should be able to:
 
 ### Links
 
+- [Solution URL](https://www.frontendmentor.io/solutions/rest-countries-api-with-color-theme-switcher-CfLOuzDjdg)
 - [Live Site URL](https://toco-rest-countries-api.netlify.app)
 
 ## My process

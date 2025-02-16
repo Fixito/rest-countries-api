@@ -23,6 +23,7 @@ export default function CategoryFilter({
     <>
       <Select name='category' value={value} onValueChange={onSelect}>
         <SelectTrigger className='shadow-input bg-background h-12 w-[12.5rem] rounded-sm border-none px-6 py-3.5 text-xs/5 sm:h-14 sm:py-[1.125rem] sm:text-sm/5'>
+          <span className='sr-only'>Filter By Region'</span>
           <SelectValue placeholder='Filter By Region' />
         </SelectTrigger>
         <SelectContent className='shadow-input rounded-sm border-none'>
