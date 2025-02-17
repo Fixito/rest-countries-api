@@ -72,7 +72,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className='mx-auto max-w-7xl px-4 py-6 xl:px-0'>
+    <div className='mx-auto max-w-7xl px-4 py-6 md:py-12 xl:px-0'>
       <SearchAndFilter
         searchTerm={searchTerm}
         onInputChange={handleInputChange}
